@@ -1,0 +1,85 @@
+body {
+    margin:                     0;
+    padding:                    0;
+    background:                 #eee;
+    font-family:                'Helvetica Neue',
+                                'Helvetica',
+                                'Arial',
+                                sans-serif;
+}
+header {
+    position:                   relative;
+    z-index:                    2;
+    background:                 yellow;
+    margin:                     0;
+}
+header div,
+#container{
+    display:                    block;
+    width:                      940px;
+    margin:                     0 auto;
+    padding:                    10px 20px;
+}
+#container {
+    background:                 #fff;
+    position:                   relative;
+    z-index:                    1;
+    -webkit-box-shadow:         rgba(0,0,0,0.5) 0 4px 10px;
+    margin-top:                 -5px;
+}
+
+header,
+#container {
+    zoom:                       1;
+}
+header:after,
+#container:after {
+    content:                    '.';
+    display:                    block;
+    clear:                      both;
+    height:                     0;
+    visibility:                 hidden;
+}
+
+header h1 {
+    margin:                     0 0 10px;
+    float:                      left;
+}
+header p {
+    float:                      right;
+    font-size:                  12px;
+}
+
+#compare,
+#recommendations {
+    width:                      460px;
+    text-align:                 center;
+}
+#compare {
+    float:                      left;
+}
+#recommendations {
+    float:                      right;
+}
+
+
+#compare button {
+    display:                    block;
+    width:                      460px;
+    padding:                    20px;
+    margin:                     10px auto;
+    cursor:                     pointer;
+    border:                     none;
+    -webkit-border-radius:      10px;
+    -moz-border-radius:         10px;
+    border-radius:              10px;
+}
+#compare button i {
+    font-size:                  30px;
+    font-weight:                bold;
+    font-style:                 normal;
+    display:                    block;
+    margin-bottom:              5px;
+}
+
+

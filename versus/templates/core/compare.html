@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div id='compare'>
   <h2>Which do you prefer?</h2>
 
   <form method='POST' action=''>
@@ -24,6 +26,15 @@
       {% if venue_b.city %}in {{ venue_b.city }}{% endif %}
     </button>
   </form>
+</div>
+
+<div id='recommendations'>
+  <h2>Recommended</h2>
+  <p>
+    We don't have enough information to recommend anything yet.
+    Keep telling us what you prefer, we'll get there soon!
+  </p>
+</div>
 
 {% endblock %}
 

@@ -1,16 +1,21 @@
-<!DOCTYPE html>
+{% load static %}<!DOCTYPE html>
 <html lang='en'>
   <head>
     <title>Versus</title>
+    <link rel='stylesheet' type='text/css' href='{% get_static_prefix %}css/screen.css'>
   </head>
   <body>
-    <h1>Versus</h1>
-
-    {% if user.is_authenticated %}
-      <p>You are logged in as {{ user.get_profile.display_name }}</p>
-    {% endif %}
-
-    {% block content %}{% endblock %}
+    <header>
+      <div>
+        <h1>Versus</h1>
+        {% if user.is_authenticated %}
+          <p>You are logged in as {{ user.get_profile.display_name }}</p>
+        {% endif %}
+      </div>
+    </header>
+    <div id='container'>
+      {% block content %}{% endblock %}
+    </div>
   </body>
 </html>
 
