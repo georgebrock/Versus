@@ -34,8 +34,10 @@ class Backend(object):
         username = 'foursquare:%s' % foursquare_user.id()
 
         try:
+            new_user = False
             user = User.objects.get(username=username)
         except User.DoesNotExist:
+            new_user = True
             user = User(username=username)
             user.set_unusable_password()
 
@@ -49,6 +51,10 @@ class Backend(object):
         profile = user.get_profile()
         profile.access_token = authenticator.access_token
         profile.save()
+
+        # Find out which venues a new user has visited
+        if new_user:
+            profile.update_visited_venues()
 
         return user
 
