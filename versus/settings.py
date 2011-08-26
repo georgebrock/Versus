@@ -2,6 +2,7 @@
 import os
 
 PROJECT_ROOT = os.path.dirname(__file__)
+PROJECT_URL = 'http://fort.local:8000'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -119,6 +120,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'core',
+    'foursquare',
+
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -147,3 +152,12 @@ LOGGING = {
         },
     }
 }
+
+FOURSQUARE_CLIENT_ID = os.environ.get('VERSUS_FOURSQUARE_CLIENT_ID')
+FOURSQUARE_SECRET = os.environ.get('VERSUS_FOURSQUARE_SECRET')
+
+AUTHENTICATION_BACKENDS = (
+    'foursquare.auth.Backend',
+)
+AUTH_PROFILE_MODULE = 'foursquare.UserProfile'
+

@@ -5,9 +5,12 @@ from django.conf.urls.defaults import patterns, include, url
 # admin.autodiscover()
 
 from core.views import HomepageView
+from foursquare.views import StartAuthView, CompleteAuthView
 
 urlpatterns = patterns('',
     url(r'^$', HomepageView.as_view(), name='home'),
+    url(r'^login/', StartAuthView.as_view(), name='login'),
+    url(r'^authenticated/', CompleteAuthView.as_view(), name='login-complete'),
 
     # Examples:
     # url(r'^$', 'versus.views.home', name='home'),
