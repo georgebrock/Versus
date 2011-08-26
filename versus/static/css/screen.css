@@ -114,5 +114,9 @@ header form div {
     display:                    block;
     margin-bottom:              5px;
 }
+#compare button:hover,
+#compare button:focus {
+    -webkit-box-shadow:         rgba(0,0,0,0.5) 0 2px 5px;
+}
 
 
