@@ -1,15 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <p>
+
+<div id='welcome'>
+  <p class='intro'>
     Versus pits the places you visit against each other.
     You tell us which you like more and we tell you other places
-    you might want to visit.
+    you might want to visit by finding other people with similar
+    tastes.
   </p>
 
-  <p>
+  <p class='start'>
     Get started:
-    <a href='{% url login %}'>Log in with Foursquare</a>
+    {% if user.is_authenticated %}
+      <a href='{% url compare %}'>Start comparing places</a>
+    {% else %}
+      <a href='{% url login %}'>Log in with Foursquare</a>
+    {% endif %}
   </p>
+</div>
+
 {% endblock %}
 

@@ -50,6 +50,33 @@ header p {
     font-size:                  12px;
 }
 
+
+#welcome p {
+    margin:                     10px 0;
+}
+#welcome .intro {
+    float:                      left;
+    width:                      620px;
+    font-size:                  20px;
+    line-height:                1.33;
+}
+#welcome .start {
+    float:                      right;
+    width:                      280px;
+    padding:                    20px 10px;
+    background:                 #eee;
+    text-align:                 center;
+    -webkit-border-radius:      10px;
+    -moz-border-radius:         10px;
+    border-radius:              10px;
+}
+#welcome .start a {
+    display:                    block;
+    font-size:                  20px;
+    font-weight:                bold;
+}
+
+
 #compare,
 #recommendations {
     width:                      460px;
@@ -61,7 +88,6 @@ header p {
 #recommendations {
     float:                      right;
 }
-
 
 #compare button {
     display:                    block;
