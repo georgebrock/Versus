@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from auth import get_authenticator
 import pysq.apiv2 as psq
+import itertools
+import random
 
 class UserProfile(models.Model):
     """
@@ -72,6 +74,15 @@ class UserProfile(models.Model):
                 )
                 visit.save()
 
+    def venue_pair(self):
+        """
+        Returns a pair of venues that the user has visited.
+        """
+        #TODO: Limit to pairs that the user has not already seen
+        venues = self.visited_venues.all()
+        pairs = itertools.permutations(venues, 2)
+        return random.choice(list(pairs))
+
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
@@ -86,8 +97,12 @@ class Venue(models.Model):
 
     visitors = models.ManyToManyField(UserProfile, through='Visit')
 
+    def __unicode__(self):
+        return self.name
+
 
 class Visit(models.Model):
     profile = models.ForeignKey(UserProfile)
     venue = models.ForeignKey(Venue)
+    score = models.IntegerField(default=0)
 

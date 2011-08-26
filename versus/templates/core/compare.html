@@ -1,6 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-  Compare some things!
+  <h2>Which do you prefer?</h2>
+
+  <form method='POST' action=''>
+    {% csrf_token %}
+    <input type='hidden' name='winner' value='{{ venue_a.pk }}'>
+    <input type='hidden' name='loser' value='{{ venue_b.pk }}'>
+    <button type='submit'>
+      <i>{{ venue_a }}</i>
+      {% if venue_a.city %}in {{ venue_a.city }}{% endif %}
+    </button>
+  </form>
+
+  or
+
+  <form method='POST' action=''>
+    {% csrf_token %}
+    <input type='hidden' name='winner' value='{{ venue_b.pk }}'>
+    <input type='hidden' name='loser' value='{{ venue_a.pk }}'>
+    <button type='submit'>
+      <i>{{ venue_b }}</i>
+      {% if venue_b.city %}in {{ venue_b.city }}{% endif %}
+    </button>
+  </form>
+
 {% endblock %}
 
