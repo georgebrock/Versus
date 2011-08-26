@@ -23,13 +23,19 @@ class CompareView(TemplateView):
             profile=request.user.get_profile(),
             venue=request.POST.get('winner'),
         )
-        winning_visit.update(score=F('score')+1)
+        winning_visit.update(
+            score=F('score')+1,
+            ranked=True,
+        )
 
         losing_visit = Visit.objects.filter(
             profile=request.user.get_profile(),
             venue=request.POST.get('loser'),
         )
-        losing_visit.update(score=F('score')-1)
+        losing_visit.update(
+            score=F('score')-1,
+            ranked=True,
+        )
 
         #TODO Record that the user has made a judgement on this pair
 

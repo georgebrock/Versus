@@ -106,4 +106,5 @@ class Visit(models.Model):
     profile = models.ForeignKey(UserProfile)
     venue = models.ForeignKey(Venue)
     score = models.IntegerField(default=0)
+    ranked = models.BooleanField(default=False)
 
