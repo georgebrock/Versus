@@ -36,3 +36,12 @@ class CompleteAuthView(View):
         else:
             return HttpResponseBadRequest(content='Bad request; no such user')
 
+
+class LogoutView(View):
+    """
+    Logs out the current user.
+    """
+    def post(self, request):
+        auth.logout(request)
+        return HttpResponseRedirect(reverse('home'))
+

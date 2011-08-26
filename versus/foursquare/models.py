@@ -79,6 +79,7 @@ class UserProfile(models.Model):
         Returns a pair of venues that the user has visited.
         """
         #TODO: Limit to pairs that the user has not already seen
+        #TODO: Prefer venues that the user hasn't seen at all
         venues = self.visited_venues.all()
         pairs = itertools.permutations(venues, 2)
         return random.choice(list(pairs))

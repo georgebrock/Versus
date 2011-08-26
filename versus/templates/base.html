@@ -9,7 +9,13 @@
       <div>
         <h1>Versus</h1>
         {% if user.is_authenticated %}
-          <p>You are logged in as {{ user.get_profile.display_name }}</p>
+          <div class='user'>
+            You are logged in as {{ user.get_profile.display_name }}
+            <form method='POST' action='{% url logout %}'>
+              {% csrf_token %}
+              <button type='submit'>Log out</button>
+            </form>
+          </div>
         {% endif %}
       </div>
     </header>
