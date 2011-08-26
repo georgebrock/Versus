@@ -3,12 +3,12 @@ from django.core.urlresolvers import reverse
 import pysq.apiv2 as psq
 import settings
 
-def get_authenticator():
+def get_authenticator(access_token=None):
     """
     Returns a pysq.apiv2.FSAuthenticator object that can be used to make
     authenticated queries to the Foursquare API.
     """
-    return psq.FSAuthenticator(
+    authenticator = psq.FSAuthenticator(
         settings.FOURSQUARE_CLIENT_ID,
         settings.FOURSQUARE_SECRET,
         '%s%s' % (
@@ -16,6 +16,9 @@ def get_authenticator():
             reverse('login-complete'),
         )
     )
+    if access_token:
+        authenticator.access_token = access_token
+    return authenticator
 
 
 class Backend(object):
