@@ -12,7 +12,7 @@ class UserProfile(models.Model):
     access_token = models.CharField(max_length=128)
     last_checkin_update = models.IntegerField(null=True)
 
-    visited_venues = models.ManyToManyField('Venue', through='Checkin')
+    visited_venues = models.ManyToManyField('Venue', through='Visit')
 
     def display_name(self):
         """
@@ -61,14 +61,16 @@ class UserProfile(models.Model):
                 venue.save()
 
             try:
-                checkin = Checkin.objects.get(fsq_id=foursquare_checkin.id())
-            except Checkin.DoesNotExist:
-                checkin = Checkin.objects.create(
-                    fsq_id=foursquare_checkin.id(),
+                visit = Visit.objects.get(
                     profile=self,
                     venue=venue,
                 )
-                checkin.save()
+            except Visit.DoesNotExist:
+                visit = Visit.objects.create(
+                    profile=self,
+                    venue=venue,
+                )
+                visit.save()
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -82,11 +84,10 @@ class Venue(models.Model):
     name = models.CharField(max_length=128)
     city = models.CharField(max_length=32)
 
-    visitors = models.ManyToManyField(UserProfile, through='Checkin')
+    visitors = models.ManyToManyField(UserProfile, through='Visit')
 
 
-class Checkin(models.Model):
-    fsq_id = models.CharField(max_length=32)
+class Visit(models.Model):
     profile = models.ForeignKey(UserProfile)
     venue = models.ForeignKey(Venue)
 
