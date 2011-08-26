@@ -10,6 +10,9 @@ class StartAuthView(View):
     user to Foursquare so that they can authorise versus.
     """
     def get(self, request):
+        if request.user.is_authenticated():
+            return HttpResponseRedirect(reverse('compare'))
+
         auth = get_authenticator()
         uri = auth.authorize_uri()
         return HttpResponseRedirect(uri)
