@@ -11,6 +11,12 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     access_token = models.CharField(max_length=128)
 
+    def display_name(self):
+        """
+        Returns the user's name, in the same style Foursquare uses.
+        """
+        return "%s %s." % (self.user.first_name, self.user.last_name[0])
+
     def foursquare_user(self):
         """
         Returns a pysq.apiv2.User instance for this user.

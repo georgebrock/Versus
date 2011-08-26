@@ -4,13 +4,16 @@ from django.conf.urls.defaults import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
-from core.views import HomepageView
+from core.views import HomepageView, CompareView
 from foursquare.views import StartAuthView, CompleteAuthView
 
 urlpatterns = patterns('',
     url(r'^$', HomepageView.as_view(), name='home'),
+
     url(r'^login/', StartAuthView.as_view(), name='login'),
     url(r'^authenticated/', CompleteAuthView.as_view(), name='login-complete'),
+
+    url(r'^compare/', CompareView.as_view(), name='compare'),
 
     # Examples:
     # url(r'^$', 'versus.views.home', name='home'),

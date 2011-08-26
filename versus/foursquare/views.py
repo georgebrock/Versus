@@ -1,6 +1,7 @@
 from django.views.generic import View
 from django.http import HttpResponseRedirect, HttpResponseBadRequest
 from django.contrib import auth
+from django.core.urlresolvers import reverse
 from auth import get_authenticator
 
 class StartAuthView(View):
@@ -23,10 +24,12 @@ class CompleteAuthView(View):
         try:
             auth_code = request.GET['code']
         except KeyError:
-            return HttpResponseBadRequest(content='Bad request')
+            return HttpResponseBadRequest(content='Bad request; no auth code')
 
         user = auth.authenticate(auth_code=auth_code)
-
-        #TODO Redirect to the first comparison page
-        raise Exception(user.last_name)
+        if user is not None:
+            auth.login(request, user)
+            return HttpResponseRedirect(reverse('compare'))
+        else:
+            return HttpResponseBadRequest(content='Bad request; no such user')
 
