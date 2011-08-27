@@ -2,7 +2,7 @@
 import os
 
 PROJECT_ROOT = os.path.dirname(__file__)
-PROJECT_URL = 'http://fort.local:8000'
+PROJECT_URL = 'http://foursquare-versus.herokuapp.com'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
