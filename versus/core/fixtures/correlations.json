@@ -1,0 +1,225 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "foursquare:1",
+      "password": "!"
+    }
+  },
+  {
+    "model": "foursquare.userprofile",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "access_token": "abc123"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "username": "foursquare:2",
+      "password": "!"
+    }
+  },
+  {
+    "model": "foursquare.userprofile",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "access_token": "abc123"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "username": "foursquare:3",
+      "password": "!"
+    }
+  },
+  {
+    "model": "foursquare.userprofile",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "access_token": "abc123"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "username": "foursquare:4",
+      "password": "!"
+    }
+  },
+  {
+    "model": "foursquare.userprofile",
+    "pk": 4,
+    "fields": {
+      "user": 4,
+      "access_token": "abc123"
+    }
+  },
+
+  {
+    "model": "foursquare.venue",
+    "pk": 1,
+    "fields": {
+      "fsq_id": "abc123",
+      "name": "The Bricklayers Arms",
+      "city": "London"
+    }
+  },
+  {
+    "model": "foursquare.venue",
+    "pk": 2,
+    "fields": {
+      "fsq_id": "abc124",
+      "name": "The Gladstone",
+      "city": "London"
+    }
+  },
+  {
+    "model": "foursquare.venue",
+    "pk": 3,
+    "fields": {
+      "fsq_id": "abc125",
+      "name": "The Libertine",
+      "city": "London"
+    }
+  },
+  {
+    "model": "foursquare.venue",
+    "pk": 4,
+    "fields": {
+      "fsq_id": "abc126",
+      "name": "The Princess Louise",
+      "city": "London"
+    }
+  },
+
+  {
+    "model": "foursquare.visit",
+    "pk": 1,
+    "fields": {
+      "profile": 1,
+      "venue": 1,
+      "score": 2,
+      "ranked": true
+    }
+  },
+  {
+    "model": "foursquare.visit",
+    "pk": 2,
+    "fields": {
+      "profile": 1,
+      "venue": 2,
+      "score": 3,
+      "ranked": true
+    }
+  },
+  {
+    "model": "foursquare.visit",
+    "pk": 3,
+    "fields": {
+      "profile": 1,
+      "venue": 3,
+      "score": 3,
+      "ranked": true
+    }
+  },
+  {
+    "model": "foursquare.visit",
+    "pk": 4,
+    "fields": {
+      "profile": 1,
+      "venue": 4,
+      "score": 1,
+      "ranked": true
+    }
+  },
+  {
+    "model": "foursquare.visit",
+    "pk": 5,
+    "fields": {
+      "profile": 2,
+      "venue": 1,
+      "score": 2,
+      "ranked": true
+    }
+  },
+  {
+    "model": "foursquare.visit",
+    "pk": 6,
+    "fields": {
+      "profile": 2,
+      "venue": 3,
+      "score": 3,
+      "ranked": true
+    }
+  },
+  {
+    "model": "foursquare.visit",
+    "pk": 7,
+    "fields": {
+      "profile": 2,
+      "venue": 4,
+      "score": 1,
+      "ranked": true
+    }
+  },
+  {
+    "model": "foursquare.visit",
+    "pk": 8,
+    "fields": {
+      "profile": 3,
+      "venue": 1,
+      "score": 1,
+      "ranked": true
+    }
+  },
+  {
+    "model": "foursquare.visit",
+    "pk": 9,
+    "fields": {
+      "profile": 3,
+      "venue": 2,
+      "score": 0,
+      "ranked": true
+    }
+  },
+  {
+    "model": "foursquare.visit",
+    "pk": 10,
+    "fields": {
+      "profile": 3,
+      "venue": 4,
+      "score": 4,
+      "ranked": true
+    }
+  },
+  {
+    "model": "foursquare.visit",
+    "pk": 11,
+    "fields": {
+      "profile": 4,
+      "venue": 1,
+      "score": 4,
+      "ranked": true
+    }
+  },
+  {
+    "model": "foursquare.visit",
+    "pk": 12,
+    "fields": {
+      "profile": 4,
+      "venue": 4,
+      "score": 2,
+      "ranked": true
+    }
+  }
+]
+
