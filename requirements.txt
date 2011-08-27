@@ -1,4 +1,4 @@
 Django
 -e git://github.com/ChimeraCoder/PySq.git#egg=pysq
 South
-
+psycopg2
