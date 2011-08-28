@@ -1,0 +1,15 @@
+Versus TODO
+
+- DB indices for venue foursquare ID and visit venue/user combination
+- Filter venues by category
+- Handling expired access tokens (or other Foursquare errors)
+- Don't show the user the same permutation twice (there are TODO comments)
+- Build recommendations asyncronously, e.g. with Celery
+- Update venues asyncronously, e.g. with Celery
+- Better test coverage
+- Smarter ranking algorithm (Elo?)
+- Better recommendations engine (e.g. Find venues similar to a user's top venues,
+  rather than finding similar users. Venue similarity could be then be cached
+  allowing for very fast recommendations. See chapter 2 of Programming Collective
+  Intelligence)
+
