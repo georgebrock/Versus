@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 import pysq.apiv2 as psq
-import settings
+from django.conf import settings
 
 def get_authenticator(access_token=None):
     """
