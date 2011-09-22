@@ -79,3 +79,18 @@ def pearson_correlation_score(profile_a, profile_b):
     scores_by_venue = _scores_for_mutual_venues(profile_a, profile_b)
     return _calculate_pearson_correlation_score(scores_by_venue)
 
+def similar_profiles(profile):
+    """
+    Returns a sorted list of score/profile tuples for all profiles that are
+    positively correlated with the given profile. Most correlated first.
+    """
+    other_profiles = UserProfile.objects.exclude(pk=profile.pk)
+    similar_profiles = []
+    for other in other_profiles:
+        score = pearson_correlation_score(profile, other)
+        if score > 0:
+            similar_profiles.append((score, other, ))
+    similar_profiles.sort()
+    similar_profiles.reverse()
+    return similar_profiles
+
