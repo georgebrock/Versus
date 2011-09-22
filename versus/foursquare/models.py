@@ -85,7 +85,7 @@ class UserProfile(models.Model):
         return random.choice(list(pairs))
 
 def create_user_profile(sender, instance, created, **kwargs):
-    if created:
+    if created and not kwargs.get('raw', False):
         UserProfile.objects.create(user=instance)
 
 post_save.connect(create_user_profile, sender=User)
