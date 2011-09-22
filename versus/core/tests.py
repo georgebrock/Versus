@@ -1,5 +1,5 @@
 from django.test import TestCase
-from recommendations import _calculate_pearson_correlation_score, pearson_correlation_score, _scores_for_mutual_venues, similar_profiles
+from recommendations import _calculate_pearson_correlation_score, pearson_correlation_score, _scores_for_mutual_venues, similar_profiles, recommended_venues
 from foursquare.models import UserProfile
 
 class PearsonCorrelationScoreTest(TestCase):
@@ -57,4 +57,27 @@ class SimilarityTest(TestCase):
         approx_similar = [(round(score,1),pr) for score,pr in similar_profiles(p[1])]
         self.assertEqual([(1.0, p[2]), (0.7, p[4])], approx_similar)
         self.assertEqual([], similar_profiles(p[3]) )
+
+
+class RecommendationsTest(TestCase):
+    fixtures = [ 'correlations' ]
+
+    def test_recommendations(self):
+        p = UserProfile.objects.in_bulk([1,2,3,4])
+        self.assertEqual(
+            [],
+            [v for score,v in recommended_venues(p[1])],
+        )
+        self.assertEqual(
+            [2],
+            [v for score,v in recommended_venues(p[2])],
+        )
+        self.assertEqual(
+            [],
+            [v for score,v in recommended_venues(p[3])],
+        )
+        self.assertEqual(
+            set([2, 3]),
+            set([v for score,v in recommended_venues(p[4])]),
+        )
 

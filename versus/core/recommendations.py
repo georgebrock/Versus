@@ -94,3 +94,29 @@ def similar_profiles(profile):
     similar_profiles.reverse()
     return similar_profiles
 
+def recommended_venues(profile):
+    """
+    Returns a sorted list of score/venue_id tuples for all venues that have been
+    visited by the most strongly correlated users.
+    """
+    visited_venue_ids = [v.venue_id for v in profile.visit_set.all()]
+    other_profiles = similar_profiles(profile)[:10]
+
+    weighted_score_sum = {}
+    correlation_sum = {}
+    for correlation, other in other_profiles:
+        visits = other.visit_set.exclude(venue__in=visited_venue_ids)
+        for visit in visits:
+            weighted_score_sum.setdefault(visit.venue_id, 0)
+            weighted_score_sum[visit.venue_id] += visit.score * correlation
+            correlation_sum.setdefault(visit.venue_id, 0)
+            correlation_sum[visit.venue_id] += correlation
+
+    normalised_scores = []
+    for venue_id in weighted_score_sum:
+        norm_score = weighted_score_sum[venue_id] / correlation_sum[venue_id]
+        normalised_scores.append((norm_score, venue_id, ))
+    normalised_scores.sort()
+    normalised_scores.reverse()
+    return normalised_scores
+
