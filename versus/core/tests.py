@@ -66,18 +66,18 @@ class RecommendationsTest(TestCase):
         p = UserProfile.objects.in_bulk([1,2,3,4])
         self.assertEqual(
             [],
-            [v for score,v in recommended_venues(p[1])],
+            [v.pk for score,v in recommended_venues(p[1])],
         )
         self.assertEqual(
             [2],
-            [v for score,v in recommended_venues(p[2])],
+            [v.pk for score,v in recommended_venues(p[2])],
         )
         self.assertEqual(
             [],
-            [v for score,v in recommended_venues(p[3])],
+            [v.pk for score,v in recommended_venues(p[3])],
         )
         self.assertEqual(
             set([2, 3]),
-            set([v for score,v in recommended_venues(p[4])]),
+            set([v.pk for score,v in recommended_venues(p[4])]),
         )
 

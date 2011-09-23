@@ -1,4 +1,4 @@
-from foursquare.models import UserProfile
+from foursquare.models import UserProfile, Venue
 from math import sqrt
 
 def _scores_for_mutual_venues(profile_a, profile_b):
@@ -96,7 +96,7 @@ def similar_profiles(profile):
 
 def recommended_venues(profile):
     """
-    Returns a sorted list of score/venue_id tuples for all venues that have been
+    Returns a sorted list of score/venue tuples for all venues that have been
     given positive scores by the most strongly correlated users.
     """
     visited_venue_ids = [v.venue_id for v in profile.visit_set.all()]
@@ -113,11 +113,15 @@ def recommended_venues(profile):
             correlation_sum[visit.venue_id] += correlation
 
     normalised_scores = []
+    venues_to_load = []
     for venue_id in weighted_score_sum:
         norm_score = weighted_score_sum[venue_id] / correlation_sum[venue_id]
         if norm_score > 0:
             normalised_scores.append((norm_score, venue_id, ))
+            venues_to_load.append(venue_id)
     normalised_scores.sort()
     normalised_scores.reverse()
-    return normalised_scores
+
+    venues = Venue.objects.in_bulk(venues_to_load)
+    return [(score, venues[venue_id]) for score,venue_id in normalised_scores]
 
