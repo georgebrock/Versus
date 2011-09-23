@@ -37,7 +37,7 @@
       People with similar taste to you also like these places:
     </p>
     <ol>
-    {% for score,venue in recommendations %}
+    {% for score,venue in recommendations|slice:':10' %}
       <li><a href='{{ venue.url }}'>{{ venue }}</a></li>
     {% endfor %}
     </ol>
