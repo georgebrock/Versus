@@ -25,6 +25,8 @@ header div,
     position:                   relative;
     z-index:                    1;
     -webkit-box-shadow:         rgba(0,0,0,0.5) 0 4px 10px;
+    -moz-box-shadow:            rgba(0,0,0,0.5) 0 4px 10px;
+    box-shadow:                 rgba(0,0,0,0.5) 0 4px 10px;
     margin-top:                 -5px;
 }
 
@@ -117,6 +119,8 @@ header form div {
 #compare button:hover,
 #compare button:focus {
     -webkit-box-shadow:         rgba(0,0,0,0.5) 0 2px 5px;
+    -moz-box-shadow:            rgba(0,0,0,0.5) 0 2px 5px;
+    box-shadow:                 rgba(0,0,0,0.5) 0 2px 5px;
 }
 
 #recommendations ol {
