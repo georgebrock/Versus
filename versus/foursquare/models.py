@@ -98,6 +98,12 @@ class Venue(models.Model):
 
     visitors = models.ManyToManyField(UserProfile, through='Visit')
 
+    def url(self):
+        """
+        URL of the venue's page on Foursquare.
+        """
+        return 'http://foursquare.com/v/%s' % self.fsq_id
+
     def __unicode__(self):
         return self.name
 

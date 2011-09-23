@@ -38,7 +38,7 @@
     </p>
     <ol>
     {% for score,venue in recommendations %}
-      <li>{{ venue }}</li>
+      <li><a href='{{ venue.url }}'>{{ venue }}</a></li>
     {% endfor %}
     </ol>
   {% else %}
