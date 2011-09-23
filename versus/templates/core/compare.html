@@ -32,10 +32,21 @@
 
 <div id='recommendations'>
   <h2>Recommended</h2>
-  <p>
-    We don't have enough information to recommend anything yet.
-    Keep telling us what you prefer, we'll get there soon!
-  </p>
+  {% if recommendations %}
+    <p>
+      People with similar taste to you also like these places:
+    </p>
+    <ol>
+    {% for score,venue in recommendations %}
+      <li>{{ venue }}</li>
+    {% endfor %}
+    </ol>
+  {% else %}
+    <p>
+      We don't have enough information to recommend anything yet.
+      Keep telling us what you prefer, we'll get there soon!
+    </p>
+  {% endif %}
 </div>
 
 {% endblock %}

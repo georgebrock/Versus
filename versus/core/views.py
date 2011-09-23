@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from foursquare.models import Visit
+from recommendations import recommended_venues
 
 class HomepageView(TemplateView):
     template_name = 'core/homepage.html'
@@ -13,9 +14,14 @@ class CompareView(TemplateView):
 
     def get_context_data(self):
         venue_a, venue_b = self.request.user.get_profile().venue_pair()
+
+        #TODO Move this out of the request cycle!
+        recommendations = recommended_venues(self.request.user.get_profile())
+
         return {
             'venue_a': venue_a,
             'venue_b': venue_b,
+            'recommendations': recommendations,
         }
 
     def post(self, request, **kwargs):
